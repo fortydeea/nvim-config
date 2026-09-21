@@ -115,6 +115,11 @@ vim.opt.fillchars = {
   foldsep = ' ',
 }
 
+-- Set wrap settings
+vim.opt.wrap = false
+vim.opt.sidescroll = 1
+vim.opt.sidescrolloff = 8
+
 -- Make line numbers default
 vim.o.number = true
 -- You can also add relative line numbers, to help with jumping.
