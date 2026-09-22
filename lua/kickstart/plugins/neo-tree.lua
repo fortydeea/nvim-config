@@ -26,6 +26,12 @@ return {
       },
       filtered_items = {
         visible = true,
+        never_show_by_pattern = {
+          "*/.git/refs/*",
+          "*/.git/refs",
+          "*/.git/logs/*",
+          "*/.git/logs",
+        },
       },
     },
   },
