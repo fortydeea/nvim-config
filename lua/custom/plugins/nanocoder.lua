@@ -1,5 +1,5 @@
 return {
-  'fortydeea/nanocoder.nvim',
+  dir = '~/fortydeea_dev/nanocoder.nvim/',
   cmd = {
     'Nanocoder', 'NanocoderFocus', 'NanocoderSelectModel', 'NanocoderAdd',
     'NanocoderSend', 'NanocoderSendText', 'NanocoderTreeAdd', 'NanocoderStatus',
