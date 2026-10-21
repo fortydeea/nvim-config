@@ -218,6 +218,8 @@ vim.keymap.set('n', '<leader>dt', function()
   vim.diagnostic.config({ virtual_text = new })
 end, { desc = 'Toggle diagnostic virtual text' })
 
+vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], { desc = 'Exit terminal mode' })
+
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
