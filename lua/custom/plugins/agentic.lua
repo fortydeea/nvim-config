@@ -4,6 +4,9 @@ return {
   --- @type agentic.PartialUserConfig
   opts = {
     provider = 'goose-acp',
+    diff_preview = {
+      layout = "inline",
+    },
     windows = {
       width = 40,
     },
