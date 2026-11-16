@@ -980,6 +980,7 @@ require('lazy').setup({
         'kotlin',
         'javascript',
         'tsx',
+        'gdscript'
       }
       require('nvim-treesitter').install(parsers)
 
