@@ -25,10 +25,32 @@ return {
   keys = {
     { '<leader>a', nil, desc = 'AI/agentic' },
     {
-      '<leader>ac',
+      '<leader>aC',
       function() require('agentic').toggle() end,
-      mode = { 'n', 'v', 'i' },
+      mode = { 'n', 'v' },
       desc = 'Toggle Agentic Chat'
+    },
+    {
+      '<leader>ac',
+      function() require('agentic').toggle({ auto_add_to_context = false }) end,
+      mode = { 'n', 'v' },
+      desc = 'Toggle Agentic Chat without context'
+    },
+    {
+      '<leader>aT',
+      function()
+        vim.cmd('tabnew')
+        local win = vim.api.nvim_get_current_win()
+        vim.bo.bufhidden = "wipe" -- buffer is deleted once its window closes
+        require("agentic").open({ auto_add_to_context = false })
+        vim.schedule(function()
+          if vim.api.nvim_win_is_valid(win) then
+            vim.api.nvim_win_close(win, false)
+          end
+        end)
+      end,
+      mode = { 'n', 'v' },
+      desc = 'Toggle Agentic Chat in a new tab'
     },
     {
       '<leader>as',
@@ -39,7 +61,7 @@ return {
     {
       '<leader>an',
       function() require('agentic').new_session() end,
-      mode = { 'n', 'v', 'i' },
+      mode = { 'n', 'v' },
       desc = 'New Agentic Session'
     },
     {
@@ -49,7 +71,7 @@ return {
       end,
       desc = 'Agentic Restore session',
       silent = true,
-      mode = { 'n', 'v', 'i' },
+      mode = { 'n', 'v' },
     },
     {
       '<leader>ad', -- ai Diagnostics
