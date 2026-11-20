@@ -31,6 +31,8 @@ return {
           "*/.git/refs",
           "*/.git/logs/*",
           "*/.git/logs",
+          "*/.git/lfs",
+          "*/.git/lfs/*",
         },
       },
     },
