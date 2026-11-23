@@ -115,6 +115,17 @@ vim.opt.fillchars = {
   foldsep = ' ',
 }
 
+-- Enable built-in markdown heading folding
+vim.g.markdown_folding = 1
+
+-- Keep folds open by default when opening a file
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "markdown",
+  callback = function()
+    vim.opt_local.foldlevel = 99
+  end,
+})
+
 -- Set wrap settings
 vim.opt.wrap = false
 vim.opt.sidescroll = 1
