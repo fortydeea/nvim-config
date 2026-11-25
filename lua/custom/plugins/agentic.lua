@@ -3,24 +3,58 @@ return {
 
   --- @type agentic.PartialUserConfig
   opts = {
-    provider = 'goose-acp',
+    provider = 'goose-codex',
     diff_preview = {
-      layout = "inline",
+      layout = 'inline',
     },
     windows = {
       width = 40,
     },
     acp_providers = {
-      ['goose-acp'] = {
+      ['goose-codex'] = {
+        name = 'Goose with Chatgpt Plus Subscription',
         command = 'goose',
         args = { 'acp' },
+        env = {
+          GOOSE_PROVIDER = 'chatgpt_codex',
+          GOOSE_MODEL = 'gpt-6.2-sol',
+          GOOSE_THINKING_EFFORT = 'low',
+        },
       },
-      ['goose-low'] = {
+      ['goose-zai'] = {
+        name = 'Goose with z.ai Lite Subscription',
         command = 'goose',
         args = { 'acp' },
-        env = { GOOSE_THINKING_EFFORT = 'low' },
-      }
-    }
+        env = {
+          GOOSE_PROVIDER = 'zai_coding_plan',
+          GOOSE_MODEL = 'glm-5.4',
+          GOOSE_THINKING_EFFORT = 'low',
+        },
+      },
+      ['claude'] = {
+        name = 'Claude Code',
+        command = 'claude-agent-acp',
+        env = {
+          ANTHROPIC_MODEL = 'claude-opus-5-5',
+          CLAUDE_CODE_EFFORT_LEVEL = 'low',
+        },
+      },
+      ['goose-openai-api'] = {
+        name = 'Goose with default OpenAI API',
+        command = 'goose',
+        args = { 'acp' },
+        env = {
+          GOOSE_PROVIDER = 'openai',
+          GOOSE_MODEL = 'gpt-6.2-sol',
+          GOOSE_THINKING_EFFORT = 'low',
+        }
+      },
+    },
+    keymaps = {
+      widget = {
+        switch_provider = '<leader>p',
+      },
+    },
   },
   keys = {
     { '<leader>a', nil, desc = 'AI/agentic' },
@@ -41,8 +75,8 @@ return {
       function()
         vim.cmd('tabnew')
         local win = vim.api.nvim_get_current_win()
-        vim.bo.bufhidden = "wipe" -- buffer is deleted once its window closes
-        require("agentic").open({ auto_add_to_context = false })
+        vim.bo.bufhidden = 'wipe' -- buffer is deleted once its window closes
+        require('agentic').open({ auto_add_to_context = false })
         vim.schedule(function()
           if vim.api.nvim_win_is_valid(win) then
             vim.api.nvim_win_close(win, false)
