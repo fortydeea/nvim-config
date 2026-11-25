@@ -3,7 +3,7 @@ return {
 
   --- @type agentic.PartialUserConfig
   opts = {
-    provider = 'goose-codex',
+    provider = 'claude',
     diff_preview = {
       layout = 'inline',
     },
